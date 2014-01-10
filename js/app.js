@@ -25,11 +25,17 @@ siteApp.config(['$routeProvider',
         templateUrl: 'partials/now-playing.html',
         controller: 'NowplayingController'
       }).
-      when('/:videoId', {
+      when('/v/:videoId', {
         templateUrl: 'partials/play.html',
         controller: 'PlayController'
       }).
-      otherwise({
+      when('/expired', {
+        templateUrl: 'partials/expired.html'
+      }).
+      when('/error', {
+        templateUrl: 'partials/error.html'
+      })
+      .otherwise({
         redirectTo: '/error',
         templateUrl: 'partials/error.html'
       });
