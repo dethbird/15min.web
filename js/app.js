@@ -9,6 +9,15 @@ siteApp = angular.module('siteApp', [
   'siteControllers'
 ]);
  
+siteApp.filter('drawVideo', function(){
+    return function(video_id, video_provider,elementId) {
+      if(video_provider==="youtube"){
+          $('#' + elementId).html( '<iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/' + video_id + '?autoplay=1&origin=http://15m.in" frameborder="0"/>' );
+      }
+    }
+});
+
+
 siteApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
