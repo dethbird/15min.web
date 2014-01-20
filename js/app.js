@@ -19,12 +19,12 @@ siteApp.filter('drawVideo', function(){
 
 siteApp.filter('drawCounter', function(){
     return function(timeslot) {
-      
-      var next = moment.unix(timeslot).toISOString();
-      console.log(timeslot);
-      console.log(next);
-      $('#countdown').attr("title", next);
-      $('#countdown').html(next);
+
+      if(timeslot!==undefined && $('#countdown').html()==""){
+        var next = moment.unix(timeslot).toISOString();
+        $('#countdown').attr("title", next);
+        $('#countdown').timeago();
+      }
 
     }
 });
