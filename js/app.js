@@ -12,11 +12,22 @@ siteApp = angular.module('siteApp', [
 siteApp.filter('drawVideo', function(){
     return function(video_id, video_provider,elementId) {
       if(video_provider==="youtube"){
-          $('#' + elementId).html( '<iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/' + video_id + '?autoplay=1&origin=http://15m.in" frameborder="0"/>' );
+          onYouTubeIframeAPIReady();
       }
     }
 });
 
+siteApp.filter('drawCounter', function(){
+    return function(timeslot) {
+      
+      var next = moment.unix(timeslot).toISOString();
+      console.log(timeslot);
+      console.log(next);
+      $('#countdown').attr("title", next);
+      $('#countdown').html(next);
+
+    }
+});
 
 siteApp.config(['$routeProvider',
   function($routeProvider) {

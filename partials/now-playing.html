@@ -1,3 +1,3 @@
- <div ng-repeat="program in data">
-    <div id="video">{{program.external_id|drawVideo:program.provider:"video"}}</div>
-</div>
+ <div id="video" data-video-id="{{data.external_id}}" data-provider="{{data.provider}}"></div>
+{{data.external_id|drawVideo:data.provider:"video"}}
+{{data.next.timeslot|drawCounter}}
